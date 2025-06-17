@@ -277,7 +277,6 @@ public class GiaiThuat {
 
     }
 
-
     //Nhập vào 1 mảng số nguyên a có n phần tử. Tìm số nguyên lớn thứ ba trong mảng.
     public static int soLonThu3() {
         int[] arr = mangSoNguyen();
@@ -354,7 +353,7 @@ public class GiaiThuat {
         int maxCount = 0;
         int maxNumber = arr[0];
         for (Map.Entry<Integer, Integer> entry : printShowNumber.entrySet()) {
-            if(entry.getValue()>maxCount){
+            if (entry.getValue() > maxCount) {
                 maxCount = entry.getValue();
                 maxNumber = entry.getKey();
             }
@@ -362,8 +361,195 @@ public class GiaiThuat {
         System.out.println("Số xuất hiện nhiều nhất là: " + maxNumber + " (xuất hiện " + maxCount + " lần)");
     }
 
+    //.Viết chương trình nhập vào 1 chuỗi. In chuỗi đó với mỗi ký tự trên 1 dòng.
+    public static void fillterString() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String neededFillter = sc.nextLine();
+
+         neededFillter = neededFillter.trim().replaceAll("\\s+", " ");
+
+         for (int i = 0; i < neededFillter.length(); i++) {
+            System.out.print(neededFillter.charAt(i));
+        }
+    }
+
+    //.Viết chương trình nhập vào 1 chuỗi. Đếm xem trong chuỗi đó có bao nhiêu từ.
+     public static void countWord() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String neededFillter = sc.nextLine();
+        neededFillter = neededFillter.trim().replaceAll("\\s+"," ");
+        int count =1;
+        for (int i = 0; i < neededFillter.length(); i++) {
+            if(neededFillter.charAt(i) == ' '){
+                count++;
+            }
+         }
+         System.out.print("  chuỗi có: "+ count + "từ" );
+     }
+
+    //Viết chương trình đảo ngược các ký tự từng từ trong câu vừa nhập. vd: tôi đi học -->iot id coh.
+    public static void reverseWord() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String neededReversed = sc.nextLine();
+        System.out.println("Chuỗi sao khi đảo ngược");
+        StringBuilder tranfomToBuider = new StringBuilder(neededReversed);
+
+        Stack<Character> arrayRevered = new Stack<>();
+        for (int i = 0; i < tranfomToBuider.length(); i++) {
+            arrayRevered.push(tranfomToBuider.charAt(i));
+        }
+        while (!arrayRevered.isEmpty()) {
+            System.out.print(arrayRevered.pop());
+        }
+    }
+
+    //.Viết chương trình nhập vào 1 chuỗi s1. Đếm xem chuỗi s2 xuất hiện trong chuỗi s1 bao nhiêu lần.
+    public static void countString() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        String s2 = "ab";
+        System.out.println("Chuỗi sao khi đảo ngược");
+        int count = 0;
+        for (int i = 0; i <= s1.length() - s2.length(); i++) {
+                 if(s1.substring(i,i+s2.length()).equals(s2)){
+                    count++;
+
+            }
+        }
+        System.out.println("chuỗi s2 xuất hiện "+ count+" lần");
+    }
+
+    //.Viết chương trình nhập vào 1 chuỗi s. Đếm xem trong chuỗi s có bao nhiêu ký tự khác nhau.
+    public static void countChar() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+         Map<Character, Integer> countCharMap = new HashMap<>();
+        for (int i = 0; i < s1.length() ;i++) {
+            if(countCharMap.containsKey(s1.charAt(i))){
+                char key = s1.charAt(i);
+                Integer value = countCharMap.get(key);
+                countCharMap.put(key, value+1);
+            }else{
+                countCharMap.put(s1.charAt(i), 1);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : countCharMap.entrySet()) {
+            char key = entry.getKey();
+            int value = entry.getValue();
+
+            System.out.println("Key: " + key + ", Value: " + value);
+        }
+
+
+
+    }
+
+    //.Viết chương trình nhập vào 1 chuỗi s. Tìm ký tự xuất hiện nhiều lần nhất trong chuỗi(không phân biệt chữ in hay thường,
+    // không tính khoảng trắng, nếu có nhiều ký tự xuất hiện nhiều nhất thì lấy ký tự đầu tiên tính từ trái sang).
+    public static void maxCountChar() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        Map<Character, Integer> countCharMap = new HashMap<>();
+        for (int i = 0; i < s1.length() ;i++) {
+            if(countCharMap.containsKey(s1.charAt(i))){
+                char key = s1.charAt(i);
+                Integer value = countCharMap.get(key);
+                countCharMap.put(key, value+1);
+            }else{
+                countCharMap.put(s1.charAt(i), 1);
+            }
+        }
+        char maxChar = 0;
+        int maxCount = 0;
+        for (Map.Entry<Character, Integer> entry : countCharMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                maxChar = entry.getKey();
+            }
+        }
+
+        System.out.println("Ký tự xuất hiện nhiều nhất: " + maxChar);
+        System.out.println("Số lần xuất hiện: " + maxCount);
+
+    }
+
+    //.Viết chương trình nhập vào 1 chuỗi s. Tìm vị trí thứ 2 mà ký tự x xuất hiện trong chuỗi s.
+    public static void maxSecondCountChar() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        Map<Character, Integer> countCharMap = new HashMap<>();
+        for (int i = 0; i < s1.length() ;i++) {
+            if(countCharMap.containsKey(s1.charAt(i))){
+                char key = s1.charAt(i);
+                Integer value = countCharMap.get(key);
+                countCharMap.put(key, value+1);
+            }else{
+                countCharMap.put(s1.charAt(i), 1);
+            }
+        }
+        char maxChar = 0;
+        int maxCount = 0;
+        char maxSecondChar = 0;
+        int maxSecondCount = 0;
+        for (Map.Entry<Character, Integer> entry : countCharMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                maxChar = entry.getKey();
+            }
+        }
+
+        for (Map.Entry<Character, Integer> entry : countCharMap.entrySet()) {
+            if (entry.getValue() < maxCount && entry.getValue() >  maxSecondCount) {
+                maxSecondCount = entry.getValue();
+                maxSecondChar = entry.getKey();
+            }
+        }
+
+
+        System.out.println("Ký tự xuất hiện nhiều thứ hai: " + maxSecondChar);
+        System.out.println("Số lần xuất hiện: " + maxSecondCount);
+
+    }
+
+    //.Viết chương trình nhập vào 1 xâu s. Đếm xem trong xâu có bao nhiêu ký tự in hoa.
+    public static void countUppercase() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            if(Character.isUpperCase(s1.charAt(i))){
+                count++;
+            }
+        }
+        System.out.println("Số kí tự in hoa là: " + count);
+
+    }
+
+    //.Viết chương trình nhập vào họ và tên của 1 người. In ra tên của người đó.
+    public static void printName() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            if(Character.isUpperCase(s1.charAt(i))){
+                count++;
+            }
+        }
+        System.out.println("Số kí tự in hoa là: " + count);
+
+    }
+
     public static void main(String[] args) {
-        countMaxShowNumber();
+        countUppercase();
     }
 
     //nhập mảng số nguyên
