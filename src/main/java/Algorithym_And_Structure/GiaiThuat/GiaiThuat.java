@@ -1,6 +1,11 @@
 package Algorithym_And_Structure.GiaiThuat;
 
-import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class GiaiThuat {
@@ -539,17 +544,105 @@ public class GiaiThuat {
         System.out.print("Nhập chuỗi: ");
         String s1 = sc.nextLine();
         int count = 0;
-        for (int i = 0; i < s1.length(); i++) {
-            if(Character.isUpperCase(s1.charAt(i))){
-                count++;
+        int lastSpace = 0;
+        String removeSpace= s1.trim();
+         for (int i = 0; i < removeSpace.length(); i++) {
+            count++;
+            if(removeSpace.charAt(i) == ' '){
+                lastSpace=+count;
             }
         }
-        System.out.println("Số kí tự in hoa là: " + count);
-
+        System.out.println("Tên của bạn là: " + s1.substring(lastSpace, removeSpace.length()) );
     }
 
+    //.Viết chương trình nhập vào họ và tên của 1 người. In ra họ của người đó.
+    public static void printHo() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        int count = 0;
+        int lastSpace = 0;
+        String removeSpace= s1.trim();
+        for (int i = 0; i < removeSpace.length(); i++) {
+            count++;
+            if(removeSpace.charAt(i) == ' '){
+                lastSpace=+count;
+            }
+        }
+        System.out.println("Họ của bạn là: " + s1.substring(0, lastSpace) );
+    }
+
+    //.Viết chương trình nhập vào ngày, tháng, năm (giả sử nhập đúng, không cần kiểm tra hợp lệ).
+    //Tìm ngày, tháng, năm của ngày tiếp theo.
+    public static void findNextDate()  {
+        Scanner sc = new Scanner(System.in);
+        LocalDate date = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        boolean isValid = false;
+
+        do {
+            try {
+                System.out.print("Nhập ngày tháng năm theo format dd/MM/yyyy: ");
+                String s1 = sc.nextLine();
+                date = LocalDate.parse(s1, formatter);
+                isValid = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Sai định dạng! Nhập lại nhé.");
+            }
+        } while (!isValid);
+
+        LocalDate nextDay = date.plusDays(1);
+        System.out.println("Ngày tiếp theo là: " + nextDay.format(formatter));
+    }
+
+    //.Viết chương trình tìm các số hoàn hảo (perfect number) nhỏ hơn một số nguyên dương n cho trước
+    //. Biết số hoàn hảo là số nguyên dương, bằng tổng các ước số thực sự của nó (ví dụ: 28 = 14 + 7 + 4 + 2 + 1).
+    public static void findPerfectNumber()  {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập chuỗi: ");
+        String s1 = sc.nextLine();
+        int count = 0;
+        int lastSpace = 0;
+        String removeSpace= s1.trim();
+        for (int i = 0; i < removeSpace.length(); i++) {
+            count++;
+            if(removeSpace.charAt(i) == ' '){
+                lastSpace=+count;
+            }
+        }
+        System.out.println("Họ của bạn là: " + s1.substring(0, lastSpace) );
+    }
+
+    //Minimum Index Sum of Two Lists
+    public static class Solution {
+        public String[] findRestaurant(String[] list1, String[] list2) {
+            String[] rs = new String[list1.length + list2.length]; // đảm bảo không bị tràn mảng
+            int minSum = Integer.MAX_VALUE;
+            int index = 0;
+
+            for (int i = 0; i < list1.length; i++) {
+                for (int j = 0; j < list2.length; j++) {
+                    if (list1[i].equals(list2[j])) {
+                        int sum = i + j;
+                        if (sum < minSum) {
+                            index = 0;
+                            rs[index++] = list1[i];
+                            minSum = sum;
+                        } else if (sum == minSum) {
+                            rs[index++] = list1[i];
+                        }
+                    }
+                }
+            }
+
+            return Arrays.copyOfRange(rs, 0, index);
+        }
+    }
+
+
+
     public static void main(String[] args) {
-        countUppercase();
+
     }
 
     //nhập mảng số nguyên
