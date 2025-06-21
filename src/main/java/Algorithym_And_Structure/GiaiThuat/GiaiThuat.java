@@ -372,27 +372,27 @@ public class GiaiThuat {
         System.out.print("Nhập chuỗi: ");
         String neededFillter = sc.nextLine();
 
-         neededFillter = neededFillter.trim().replaceAll("\\s+", " ");
+        neededFillter = neededFillter.trim().replaceAll("\\s+", " ");
 
-         for (int i = 0; i < neededFillter.length(); i++) {
+        for (int i = 0; i < neededFillter.length(); i++) {
             System.out.print(neededFillter.charAt(i));
         }
     }
 
     //.Viết chương trình nhập vào 1 chuỗi. Đếm xem trong chuỗi đó có bao nhiêu từ.
-     public static void countWord() {
+    public static void countWord() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập chuỗi: ");
         String neededFillter = sc.nextLine();
-        neededFillter = neededFillter.trim().replaceAll("\\s+"," ");
-        int count =1;
+        neededFillter = neededFillter.trim().replaceAll("\\s+", " ");
+        int count = 1;
         for (int i = 0; i < neededFillter.length(); i++) {
-            if(neededFillter.charAt(i) == ' '){
+            if (neededFillter.charAt(i) == ' ') {
                 count++;
             }
-         }
-         System.out.print("  chuỗi có: "+ count + "từ" );
-     }
+        }
+        System.out.print("  chuỗi có: " + count + "từ");
+    }
 
     //Viết chương trình đảo ngược các ký tự từng từ trong câu vừa nhập. vd: tôi đi học -->iot id coh.
     public static void reverseWord() {
@@ -420,12 +420,12 @@ public class GiaiThuat {
         System.out.println("Chuỗi sao khi đảo ngược");
         int count = 0;
         for (int i = 0; i <= s1.length() - s2.length(); i++) {
-                 if(s1.substring(i,i+s2.length()).equals(s2)){
-                    count++;
+            if (s1.substring(i, i + s2.length()).equals(s2)) {
+                count++;
 
             }
         }
-        System.out.println("chuỗi s2 xuất hiện "+ count+" lần");
+        System.out.println("chuỗi s2 xuất hiện " + count + " lần");
     }
 
     //.Viết chương trình nhập vào 1 chuỗi s. Đếm xem trong chuỗi s có bao nhiêu ký tự khác nhau.
@@ -433,13 +433,13 @@ public class GiaiThuat {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập chuỗi: ");
         String s1 = sc.nextLine();
-         Map<Character, Integer> countCharMap = new HashMap<>();
-        for (int i = 0; i < s1.length() ;i++) {
-            if(countCharMap.containsKey(s1.charAt(i))){
+        Map<Character, Integer> countCharMap = new HashMap<>();
+        for (int i = 0; i < s1.length(); i++) {
+            if (countCharMap.containsKey(s1.charAt(i))) {
                 char key = s1.charAt(i);
                 Integer value = countCharMap.get(key);
-                countCharMap.put(key, value+1);
-            }else{
+                countCharMap.put(key, value + 1);
+            } else {
                 countCharMap.put(s1.charAt(i), 1);
             }
         }
@@ -451,7 +451,6 @@ public class GiaiThuat {
         }
 
 
-
     }
 
     //.Viết chương trình nhập vào 1 chuỗi s. Tìm ký tự xuất hiện nhiều lần nhất trong chuỗi(không phân biệt chữ in hay thường,
@@ -461,12 +460,12 @@ public class GiaiThuat {
         System.out.print("Nhập chuỗi: ");
         String s1 = sc.nextLine();
         Map<Character, Integer> countCharMap = new HashMap<>();
-        for (int i = 0; i < s1.length() ;i++) {
-            if(countCharMap.containsKey(s1.charAt(i))){
+        for (int i = 0; i < s1.length(); i++) {
+            if (countCharMap.containsKey(s1.charAt(i))) {
                 char key = s1.charAt(i);
                 Integer value = countCharMap.get(key);
-                countCharMap.put(key, value+1);
-            }else{
+                countCharMap.put(key, value + 1);
+            } else {
                 countCharMap.put(s1.charAt(i), 1);
             }
         }
@@ -490,12 +489,12 @@ public class GiaiThuat {
         System.out.print("Nhập chuỗi: ");
         String s1 = sc.nextLine();
         Map<Character, Integer> countCharMap = new HashMap<>();
-        for (int i = 0; i < s1.length() ;i++) {
-            if(countCharMap.containsKey(s1.charAt(i))){
+        for (int i = 0; i < s1.length(); i++) {
+            if (countCharMap.containsKey(s1.charAt(i))) {
                 char key = s1.charAt(i);
                 Integer value = countCharMap.get(key);
-                countCharMap.put(key, value+1);
-            }else{
+                countCharMap.put(key, value + 1);
+            } else {
                 countCharMap.put(s1.charAt(i), 1);
             }
         }
@@ -511,7 +510,7 @@ public class GiaiThuat {
         }
 
         for (Map.Entry<Character, Integer> entry : countCharMap.entrySet()) {
-            if (entry.getValue() < maxCount && entry.getValue() >  maxSecondCount) {
+            if (entry.getValue() < maxCount && entry.getValue() > maxSecondCount) {
                 maxSecondCount = entry.getValue();
                 maxSecondChar = entry.getKey();
             }
@@ -530,7 +529,7 @@ public class GiaiThuat {
         String s1 = sc.nextLine();
         int count = 0;
         for (int i = 0; i < s1.length(); i++) {
-            if(Character.isUpperCase(s1.charAt(i))){
+            if (Character.isUpperCase(s1.charAt(i))) {
                 count++;
             }
         }
@@ -545,14 +544,14 @@ public class GiaiThuat {
         String s1 = sc.nextLine();
         int count = 0;
         int lastSpace = 0;
-        String removeSpace= s1.trim();
-         for (int i = 0; i < removeSpace.length(); i++) {
+        String removeSpace = s1.trim();
+        for (int i = 0; i < removeSpace.length(); i++) {
             count++;
-            if(removeSpace.charAt(i) == ' '){
-                lastSpace=+count;
+            if (removeSpace.charAt(i) == ' ') {
+                lastSpace = +count;
             }
         }
-        System.out.println("Tên của bạn là: " + s1.substring(lastSpace, removeSpace.length()) );
+        System.out.println("Tên của bạn là: " + s1.substring(lastSpace, removeSpace.length()));
     }
 
     //.Viết chương trình nhập vào họ và tên của 1 người. In ra họ của người đó.
@@ -562,19 +561,19 @@ public class GiaiThuat {
         String s1 = sc.nextLine();
         int count = 0;
         int lastSpace = 0;
-        String removeSpace= s1.trim();
+        String removeSpace = s1.trim();
         for (int i = 0; i < removeSpace.length(); i++) {
             count++;
-            if(removeSpace.charAt(i) == ' '){
-                lastSpace=+count;
+            if (removeSpace.charAt(i) == ' ') {
+                lastSpace = +count;
             }
         }
-        System.out.println("Họ của bạn là: " + s1.substring(0, lastSpace) );
+        System.out.println("Họ của bạn là: " + s1.substring(0, lastSpace));
     }
 
     //.Viết chương trình nhập vào ngày, tháng, năm (giả sử nhập đúng, không cần kiểm tra hợp lệ).
     //Tìm ngày, tháng, năm của ngày tiếp theo.
-    public static void findNextDate()  {
+    public static void findNextDate() {
         Scanner sc = new Scanner(System.in);
         LocalDate date = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -597,20 +596,20 @@ public class GiaiThuat {
 
     //.Viết chương trình tìm các số hoàn hảo (perfect number) nhỏ hơn một số nguyên dương n cho trước
     //. Biết số hoàn hảo là số nguyên dương, bằng tổng các ước số thực sự của nó (ví dụ: 28 = 14 + 7 + 4 + 2 + 1).
-    public static void findPerfectNumber()  {
+    public static void findPerfectNumber() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập chuỗi: ");
         String s1 = sc.nextLine();
         int count = 0;
         int lastSpace = 0;
-        String removeSpace= s1.trim();
+        String removeSpace = s1.trim();
         for (int i = 0; i < removeSpace.length(); i++) {
             count++;
-            if(removeSpace.charAt(i) == ' '){
-                lastSpace=+count;
+            if (removeSpace.charAt(i) == ' ') {
+                lastSpace = +count;
             }
         }
-        System.out.println("Họ của bạn là: " + s1.substring(0, lastSpace) );
+        System.out.println("Họ của bạn là: " + s1.substring(0, lastSpace));
     }
 
     //Minimum Index Sum of Two Lists
@@ -639,10 +638,59 @@ public class GiaiThuat {
         }
     }
 
+    //.Nhập vào hai số nguyên dương a, b. Tính ước số chung lớn nhất và bội số chung nhỏ nhất của a, b.
+    public static String timUocBoiChung(int a, int b) {
+        int uocChung = ucln(a, b);
+        int boiChung = bcnn(a, b);
+        return "ước chung" + uocChung + "boi chung" + boiChung;
+    }
+
+    public static int ucln(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static int bcnn(int a, int b) {
+        return (a * b) / ucln(a, b);
+    }
+
+
+    //.Nhập vào một số nguyên dương n, phân tích n thành các thừa số nguyên tố.
+    public static List soNguyenTo() {
+        int index = 100;
+        List list = new ArrayList();
+        int count = 0;
+        for (int i = 2; i <= index; i++) {
+
+            for (int j = 1; j <= i; j++) {
+                if (count > 2) {
+                    break;
+                }
+                if (i % j == 0) {
+                    count++;
+
+                }
+            }
+            if(count <= 2){
+                list.add(i);
+            }
+            count =0;
+        }
+
+
+        return list;
+    }
 
 
     public static void main(String[] args) {
-
+        List list = soNguyenTo();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i)+ " ");
+        }
     }
 
     //nhập mảng số nguyên
